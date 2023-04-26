@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Leitor de Código Binário</title>
+
+<style type="text/css">
+		body {
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			line-height: 1.5;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			margin: 0;
+		}
+
+		h1 {
+			margin-top: 0;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 100%;
+			max-width: 600px;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
+
+		textarea {
+			width: 100%;
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+			resize: none;
+		}
+
+		button {
+			background-color: #4CAF50;
+  			color: white;
+  			padding: 10px 20px;
+  			border-radius: 5px;
+  			border: none;
+  			cursor: pointer;
+  			margin-top: 10px;
+  			box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+  			font-size: inherit;
+  			font-weight: bold;
+  			text-transform: uppercase;
+  			transition-duration: 0.3s;
+		}
+
+		button:hover {
+			background-color: #3e8e41;
+  		}
+
+  		p {
+  			margin-top: 20px;
+  		}
+
+  		div#text-output {
+  			margin-top: 10px;
+  			padding: 10px;
+  			background-color:#f2f2f2; 
+    		border-radius: 5px; 
+    		box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+  		}
+  		
+  		code {
+  			font-size: inherit !important; 
+  		}
+  		
+  		pre code {
+  			padding-left : 10px !important; 
+  		}
+  		
+  		pre {
+  			background-color:#f2f2f2; 
+    		border-radius :5px; 
+    		box-shadow :0px 0px 5px rgba(0,0,0,0.2); 
+    		padding :10px; 
+    		line-height :1.3em; 
+    		font-size :14px; 
+    		tab-size :4; 
+  		}
+  		
+  		pre code span {
+  			color :#c7254e; 
+  		}
+  		
+  		pre code span.comment {
+  			color :#969896; 
+  		}
+  		
+  		pre code span.string {
+  			color :#718c00; 
+  		}
+  		
+  		pre code span.keyword {
+  			color :#4271ae; 
+  		}
+  		
+  		pre code span.number {
+  			color :#a67f59; 
+  		}
+  		
+  		pre code span.operator {
+  			color :#000000; 
+  		}
+  		
+  		pre code span.punctuation {
+  			color :#000000; 
+  		}
+  		
+  		pre code span.regex {
+  			color :#c7254e; 
+  		}
+  		
+  		pre code span.variable {
+  			color :#c41a16; 
+  		}
+  		
+  		pre code span.plain-text {
+  			color :inherit; 
+  		}
+  		
+  		pre code span.script-tag {
+  			color :#4271ae; 
+  		}
+  		
+  		pre code span.style-tag {
+  			color :#c41a16; 
+  		}
+  		
+  		pre code span.tag-name {
+  			color :#4271ae; 
+  		}
+  		
+  		pre code span.attribute-name {
+  			color :#c41a16; 
+  		}
+	</style>
+</head>
+<body>
+	<h1>Leitor de Código Binário</h1>
+
+	<p>Cole o código binário abaixo:</p>
+
+	<textarea id="binary-code" rows="10"></textarea>
+
+	<button onclick="readBinaryCode()">Ler Código Binário</button>
+
+	<p>O texto correspondente será exibido abaixo:</p>
+
+	<div id="text-output"></div>
+
+	<script type="text/javascript">
+		function readBinaryCode() {
+			var binaryCode = document.getElementById("binary-code").value;
+			var textOutput = document.getElementById("text-output");
+
+			var binaryArray = binaryCode.split(" ");
+			var textArray = [];
+
+			for (var i = 0; i < binaryArray.length; i++) {
+				textArray.push(String.fromCharCode(parseInt(binaryArray[i], 2)));
+			}
+
+			textOutput.innerHTML = textArray.join("");
+		}
+	</script>
+</body>
+</html>
